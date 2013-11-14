@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+            var socket = io.connect('http://localhost');
+            socket.on('tweet', function (data) {
+                //Affichage de l'"embedded tweet"
+                $('#tweets').prepend(data.html);
+                //Exécution du script twitter widgets.js pour gérer l'affichage
+                $.getScript("http://platform.twitter.com/widgets.js");
+            });
+        </script>
+    </head>
+    <body style="background-color: #00acee;">
+        <div id="tweets"></div>
+    </body>
+</html>
